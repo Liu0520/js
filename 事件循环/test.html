@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>按钮</button>
+  <script>
+
+  const btnEl = document.querySelector('button')
+  btnEl.onclick = function() {
+    console.log('按钮被点击')
+  }
+  console.log('哈哈哈哈哈')
+
+  // 宏任务
+  setTimeout(() => {
+    console.log('定时器执行完毕')
+  }, 0);
+
+
+  // 微任务
+  new Promise((resolve, reject) => {
+    console.log('1111111')
+    console.log('2222222')
+    resolve()
+    console.log('33333333')
+  }).then(res => {
+    console.log('444444444')
+  })
+  console.log('lalallallallall')
+  </script>
+</body>
+</html>

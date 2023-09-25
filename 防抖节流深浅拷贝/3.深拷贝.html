@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function isObject(target) {
+      const type = typeof target
+      return (type !==null) && (type === 'object' || type === 'function')
+    }
+
+    function deepCopy(origin) {
+      if(!isObject(origin)) {
+        return origin
+      }
+
+      const obj = Array.isArray(origin) ? [] : {}
+      for(const key in origin) {
+        obj[key] = deepCopy(origin[key])
+      }
+      return obj
+    }
+
+    // console.log(isObject([]));
+    // console.log(isObject(null));
+    // console.log(isObject(function(){}));
+    // console.log(isObject(1));
+    // console.log(isObject({}));
+  </script>
+  <script>
+
+    const info = {  
+      name: "why",
+      age: 18,
+      friend: {
+        name: "kobe",
+        address: {
+          name: "洛杉矶",
+          detail: "斯坦普斯中心"
+        }
+      },
+      // self: info
+    }
+
+    const newInfo = deepCopy(info)
+    // info.friend.name = 'kurry'
+    // info.friend.address.name = '北京'
+    
+    // console.log(newInfo.friend.name);
+    // console.log(newInfo.friend.address.name);
+    // console.log(newInfo);
+
+    const list = [
+      {name: '黄金时代', price: 77},
+      {name: 'Javascript', price: 79}
+    ]
+    
+
+    const newList = deepCopy(list)
+    
+    list[0].price = 99
+    console.log(newList)
+    console.log(list)
+    console.log(newList[0].price)
+    console.log(newList === list)
+    console.log(newList[0] === list[0])
+  </script>
+</body>
+</html>

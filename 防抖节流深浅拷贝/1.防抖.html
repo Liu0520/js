@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      width: 300px;
+      height: 30px;
+    }
+    button {
+      width: 80px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text">
+  <button>取消</button>
+  <script>
+
+    function lyDebounce(fn, delay, immediate = false) {
+      // 记录上一次事件所触发计时器的timer
+      let timer = null
+      // 记录是否立即执行过
+      let isInstant = false
+      const _debounce = function(...args){
+        if(!isInstant && immediate) {
+          fn.apply(this,args)
+          timer = null
+          isInstant = true
+        }
+        // 如果再次触发事件，先清除上一次的timer,即不执行本该执行的事件
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+          fn.apply(this,args)
+          timer = null
+          isInstant = false
+        }, delay)
+      }
+
+      _debounce.cancel = function() {
+        if(timer) clearTimeout(timer)
+        timer = null
+        isInstant = false
+      }
+
+      return _debounce
+    }
+
+  </script>
+  <script>
+    const inputEl = document.querySelector('input')
+
+    // inputEl.oninput = function() {
+    //   console.log(`${this.value}`)
+    // }
+
+    inputEl.oninput = lyDebounce(function(event) {
+      console.log(this.value, event)
+    }, 3000, true)
+
+
+
+  </script>
+</body>
+</html>

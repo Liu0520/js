@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    console.log("AAAA");
+    setTimeout(() => console.log("BBBB"), 10);
+    // const start = new Date();
+    // console.log(new Date() - start);
+    // while (new Date() - start > 3000) {
+    //   console.log('hahahhahah');
+    // }
+    console.log("CCCC");
+    setTimeout(() => console.log("DDDD"), 0);
+    new Promise((resolve, reject) => {
+      console.log("EEEE");
+      foo.bar(100);
+    })
+    .then(() => console.log("FFFF"))
+    .then(() => console.log("GGGG"))
+    .catch(() => console.log("HHHH"));
+    console.log("IIII");
+  </script>
+</body>
+</html>
