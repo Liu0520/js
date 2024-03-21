@@ -21,7 +21,6 @@ console.log(num2 instanceof Number)
 
 
   所以
-*/
-// const sym = Symbol('kkj')
-// console.log(sym.__proto__)
+*/                                                                                                                                            
+
 
